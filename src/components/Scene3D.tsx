@@ -6,16 +6,17 @@ import { Suspense } from "react";
 const FloatingCard = () => {
   return (
     <motion.group
-      initial={{ y: 0 }}
-      animate={{
+      initial={{ y: 0, rotateY: 0 }}
+      animate={{ 
         y: [0, 0.2, 0],
-        rotateY: [0, Math.PI / 8, 0],
+        rotateY: [0, Math.PI / 8, 0]
       }}
       transition={{
         duration: 4,
         repeat: Infinity,
         repeatType: "reverse",
-        ease: "easeInOut"
+        ease: "easeInOut",
+        times: [0, 0.5, 1]
       }}
     >
       <mesh>
@@ -34,10 +35,9 @@ const FloatingCard = () => {
 
 export const Scene3D = () => {
   return (
-    <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}>
-      <Canvas>
+    <div className="absolute inset-0 -z-10">
+      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 75 }}>
         <Suspense fallback={null}>
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} intensity={0.5} />
           <FloatingCard />
