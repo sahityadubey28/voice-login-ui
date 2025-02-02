@@ -5,7 +5,7 @@ import * as THREE from "three";
 
 const FloatingCard = () => {
   return (
-    <motion.mesh
+    <motion.group
       animate={{
         y: [0, 0.2, 0],
         rotateY: [0, Math.PI / 8, 0],
@@ -16,15 +16,17 @@ const FloatingCard = () => {
         repeatType: "reverse",
       }}
     >
-      <boxGeometry args={[3, 4, 0.2]} />
-      <meshStandardMaterial
-        color="#FFF5EE"
-        transparent
-        opacity={0.6}
-        roughness={0.3}
-        metalness={0.2}
-      />
-    </motion.mesh>
+      <mesh>
+        <boxGeometry args={[3, 4, 0.2]} />
+        <meshStandardMaterial
+          color="#FFF5EE"
+          transparent
+          opacity={0.6}
+          roughness={0.3}
+          metalness={0.2}
+        />
+      </mesh>
+    </motion.group>
   );
 };
 
