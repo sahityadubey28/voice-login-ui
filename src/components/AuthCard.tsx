@@ -14,7 +14,9 @@ export const AuthCard = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-card w-full max-w-md p-8 rounded-2xl space-y-8"
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+      className="glass-card w-full max-w-md p-8 rounded-2xl space-y-8 transform transition-all duration-300 hover:shadow-2xl"
     >
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold text-primary">Height Detection App</h1>
@@ -24,7 +26,10 @@ export const AuthCard = () => {
       </div>
 
       <div className="flex justify-center gap-4">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
           onClick={() => setIsLogin(true)}
           className={`px-6 py-2 rounded-lg transition-all ${
             isLogin
@@ -33,8 +38,11 @@ export const AuthCard = () => {
           }`}
         >
           Login
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
           onClick={() => setIsLogin(false)}
           className={`px-6 py-2 rounded-lg transition-all ${
             !isLogin
@@ -43,16 +51,19 @@ export const AuthCard = () => {
           }`}
         >
           Sign Up
-        </button>
+        </motion.button>
       </div>
 
       <div className="flex flex-col items-center gap-4">
-        <button
+        <motion.button
           onClick={handleVoiceAuth}
-          className="voice-button bg-primary text-white p-8 rounded-full hover:bg-primary/90"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          className="voice-button bg-primary text-white p-8 rounded-full hover:bg-primary/90 shadow-lg"
         >
           <Mic size={32} />
-        </button>
+        </motion.button>
         <p className="text-muted-foreground">
           {isLogin ? "Login with your voice" : "Sign up with your voice"}
         </p>
