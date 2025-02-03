@@ -1,21 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { motion } from "framer-motion-3d";
 import { Suspense } from "react";
 import * as THREE from "three";
 
 const FloatingCard = () => {
   return (
-    <motion.mesh
-      initial={{ y: 0 }}
-      animate={{ y: 0.2 }}
-      transition={{
-        repeat: Infinity,
-        repeatType: "reverse",
-        duration: 2,
-        ease: "easeInOut"
-      }}
-    >
+    <mesh position={[0, 0, 0]}>
       <boxGeometry args={[3, 4, 0.2]} />
       <meshStandardMaterial
         color="#FFF5EE"
@@ -24,7 +14,7 @@ const FloatingCard = () => {
         roughness={0.3}
         metalness={0.2}
       />
-    </motion.mesh>
+    </mesh>
   );
 };
 
